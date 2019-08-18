@@ -1,0 +1,48 @@
+
+.searchInput {
+    border-radius: 0;
+    clear: both;
+	display:inline-block;
+	width: 15vw; 
+	vertical-align:top;
+}
+
+.control{ 
+	display:inline-block;
+
+}
+/*
+.searchInput input, 
+.react-datepicker__input-container input{
+	width: 11.4vw;
+	border: 2px solid #8692a9;
+	padding: 7px;
+	background: white;
+	transition: all  0.35s ease; 
+}
+
+
+.searchInput input:hover, 
+.searchInput input:active, 
+.searchInput input:focus, 
+.searchInput input.hasValue  {
+	width: 40vw;
+}  
+
+.searchInput button {
+	width: 5vw;
+    height: 43px;
+    line-height: 25px;
+    border: 2px solid #8692a9;
+    padding: 7px;
+    background: white;
+    display: inline-block;
+    border-left: 0;
+    vertical-align: middle;
+}
+ */
+.dateTime {
+	width: 30vw;
+	display:  inline-block;
+	margin: 0 auto; 
+}

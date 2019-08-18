@@ -1,0 +1,37 @@
+.AddNewElem.button{
+	cursor: pointer; 
+ 	position: relative;
+}
+.AddNewElem > div{
+	font-size: 1em; 
+	margin:0;
+	padding: 0;
+	color: #8692a9;
+
+}
+
+.AddNewElem > div > p {
+	font-size: 0.8rem;
+    background-color: rgb(134, 146, 169);
+    padding: 10px;
+    min-width: 200px;
+    position: absolute;
+    top: 30px;
+    color: white;
+}
+
+
+.AddNewElem header{
+ 	margin:0;
+	padding: 0 8px;
+}
+
+.isVisible{
+	display: block;
+}
+.isNotVisible{
+	display: none; 
+}
+
+
+

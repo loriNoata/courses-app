@@ -1,0 +1,31 @@
+.BkgColors {
+	width: auto; 
+	margin: 0; 
+	padding: 0;
+	display: inline-block; 
+	float: right; 
+	margin-top: 7px;
+ }
+ 
+ 
+ .coverBox li {
+	width: 2vw;
+    height: 2vh;
+    margin: 0.2vw;
+ }
+ 
+ .red {
+	 background-color: lightcoral; 
+ }
+ 
+ .yellow {
+	 background-color: orange; 
+ }
+ 
+ .blue {
+	 background-color: lightblue; 
+ }
+
+ .grey {
+	 background-color: lightgrey;
+ }
