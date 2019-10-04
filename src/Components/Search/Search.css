@@ -1,0 +1,13 @@
+.searchInput {
+    border-radius: 0;
+    clear: both;
+	display:inline-block;
+	width: 15vw; 
+	vertical-align:top;
+}
+
+.control{ 
+	display:inline-block;
+
+}
+ 

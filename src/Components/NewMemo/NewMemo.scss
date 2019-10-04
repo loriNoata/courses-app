@@ -1,26 +1,37 @@
+@import './../../partials/variables'; 
+@import './../../partials/mixins'; 
+
 .AddNewElem.button{
 	cursor: pointer; 
- 	position: relative;
+	position: absolute;
+	bottom: 10px;
+	height: 50px;
+    padding-left: 0;
+
 }
 .AddNewElem > div{
 	font-size: 1em; 
 	margin:0;
 	padding: 0;
-	color: #8692a9;
+	color: $default-text-color;
 
 }
 
 .AddNewElem > div > p {
 	font-size: 0.8rem;
-    background-color: rgb(134, 146, 169);
+    background-color: $default-text-color;
     padding: 10px;
     min-width: 200px;
     position: absolute;
-    top: 30px;
-    color: white;
+    top: 40px;
+	color: white;
+    right: 0;
 }
 
-
+.p-is-small {
+	font-size: 0.5rem; 
+	margin-left: 0; 
+}
 .AddNewElem header{
  	margin:0;
 	padding: 0 8px;

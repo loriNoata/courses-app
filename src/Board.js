@@ -1,25 +1,21 @@
 import React, {Component} from 'react'; 
-import Tile from './Tile';
-import AddNewWishCourses  from './AddNewWishCourses';
-import Search from './Search';
-import ColorContainers from './BkgColors'; 
-import SortBy from './SortBy'; 
-
-import './Tile.css'; 
-import WishListContainer from './WishListContainer'; 
-
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCheckSquare, faClock, faPlusCircle, faCalendarDay } from '@fortawesome/free-solid-svg-icons'
-library.add(faCheckSquare, faClock, faPlusCircle, faCalendarDay); 
+import Tiles    from './Components/Tiles/Tiles';
+import Search   from './Components/Search/Search';
+import SortBy   from './Components/Search/SortBy'; 
+import ColorContainers from './Components/BkgColor/BkgColors'; 
+import AsideBar from './Components/AsideBar/AsideBar'; 
+import AsideMenu  from './Components/Menu/AsideMenu'; 
+import ContactUs from './Components/ContactUs/ContactUs'; 
+import Chart from './Components/Chart/chart'; 
+import TrainingsTypes from './Components/Tiles/Submenus/TrainingsTypes'; 
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { library } from '@fortawesome/fontawesome-svg-core'; 
+import { faCheckSquare, faClock, faPlusCircle, faCalendarDay, faBell, faCog, faBars, faEllipsisV, faEnvelope, faEnvelopeOpenText, faPhoneAlt, faMapMarkerAlt} from '@fortawesome/free-solid-svg-icons'; 
+library.add(faCheckSquare, faClock, faPlusCircle, faBell, faCalendarDay, faCog, faBars, faEllipsisV, faEnvelope, faEnvelopeOpenText, faPhoneAlt, faMapMarkerAlt); 
 
 function stringSort(a, b) {
-
-	if (a < b) {
-		return -1;
-	}
-	if (a > b) {
-		return 1;
-	}
+	if (a < b) { return -1; }
+	if (a > b) { return 1;  }
 	return 0;
 }
 
@@ -32,8 +28,11 @@ export default class Board extends Component{
 		super(props); 
 		this.state = {
 			changeColorClass: "", 
-			selectedNotes : [], 
 			isToggled : true, 
+			colors: [ 'red', 'yellow', 'blue', 'grey' ],
+			menu : [{ menu: 'Home',       icon: 'cog', submenu :null}, 
+					{ menu: 'Trainings',  icon: 'check-square',  submenu: ['Active','Complete', 'Tests']}, 
+					{ menu: 'Contact Us', icon: 'envelope', submenu: ' '}], 
 			coursesSortBy: '', 
 			notes : [{
 				id: 10, 
@@ -41,14 +40,13 @@ export default class Board extends Component{
 				level: '1', 
 				timetable: "10:00",
 				teacher: "Oana Pelea", 
-				duration: "2h:00min", 
+				duration: "02:30:00", 
 				active: true, 
 				data : {
 					day: 11, 
 					month : "January"
 				}, 
 				complete: 20
-				
 			}, 
 			{
 				id: 11, 
@@ -56,7 +54,7 @@ export default class Board extends Component{
 				level: '2', 
 				timetable: "12:30",
 				teacher: "Tea Cher ", 
-				duration: "2h:30min", 
+				duration: "02:30", 
 				active: false,
 				data : {
 					day: 21, 
@@ -70,7 +68,7 @@ export default class Board extends Component{
 				title : "SAP Basics",
 				timetable: "17:30",
 				teacher: "Mib Haela", 
-				duration: "2h:30min", 
+				duration: "02:10", 
 				active: false,
 				data : {
 					day: 21, 
@@ -84,7 +82,7 @@ export default class Board extends Component{
 				title : "Sport",
 				timetable: "14:30",
 				teacher: "Spor Sport", 
-				duration: "1h:30min", 
+				duration: "01:45", 
 				active: false,
 				data : {
 					day: 21, 
@@ -112,7 +110,7 @@ export default class Board extends Component{
 				level: '3',
 				timetable: "17:30",
 				teacher: "Edu Bibb", 
-				duration: "0h:30min", 
+				duration: "0h:45", 
 				active: false,
 				data : {
 					day: 19, 
@@ -126,7 +124,7 @@ export default class Board extends Component{
 				title : "SAP Basics",
 				timetable: "17:30",
 				teacher: "Mib Haela", 
-				duration: "2h:30min", 
+				duration: "02:30", 
 				active: true,
 				data : {
 					day: 21, 
@@ -140,7 +138,7 @@ export default class Board extends Component{
 				title : "Sport",
 				timetable: "14:30",
 				teacher: "Spo Sport", 
-				duration: "1h:30min", 
+				duration: "01:45", 
 				active: true,
 				data : {
 					day: 21, 
@@ -154,30 +152,26 @@ export default class Board extends Component{
 				title : " Music",
 				timetable: "12:30",
 				teacher: "Bazede Date", 
-				duration: "2h:30min", 
+				duration: "20:50", 
 				active: true,
 				data : {
 					day: 21, 
 					month : "August"
 				}, 
 				complete: 66
-			}, ], 
-			wishTrainings: [],
-			colors: [ 'red', 'yellow', 'blue', 'grey' ]
+			}] 
+			
 		}; 
 
 		this.initialNotes = [...this.state.notes]; 
-		this.displayNotes = this.displayNotes.bind(this);
 		this.update = this.update.bind(this);
-		this.addNewNote = this.addNewNote.bind(this);
+		
 		this.removeNode = this.removeNode.bind(this);
 		this.changeColor = this.changeColor.bind(this);
 		this.searched = this.searched.bind(this);
 		this.resetSearch = this.resetSearch.bind(this);
 		this.toggleContainer = this.toggleContainer.bind(this);
  		this.onSortBy = this.onSortBy.bind(this);
- 
-		
 	 }
 	 
 
@@ -187,45 +181,13 @@ export default class Board extends Component{
 		this.setState(newState);
  	}
 	
-	addNewNote(val) {
-		const { wishTrainings } = this.state;  
-		let updatedTrainings = [...wishTrainings, val];
 
-	   	// if (this.state.isToggled) {
-		// 	this.toggleContainer(this.state.isToggled)
-	   	// }
- 		
-		this.setState({
-			...this.state, 
-			wishTrainings : updatedTrainings
-		});
-
- 		return wishTrainings
-  	} 
 	
 	removeNode(elm) {
 		var newState = {...this.state}; 
 		var noteRemoved = newState.notes.splice(elm, 1);
 		this.setState(noteRemoved); 
 	}
-	
-	displayNotes(note, i) {
-		return (
-			<Tile key={note.id} 
-				onChange={this.update} 
-				onClickRemove={this.removeNode} 
-				index={i} 
-				coursesSortBy ={this.state.coursesSortBy}
-				dataComplete={note.complete} 
-				dataDay={note.data.day}
-				dataMonth={note.data.month}					
-				dataTimetable={note.timetable} 
-				dataDuration={note.duration} 
-				dataTeacher={note.teacher} 
-				dataTitle={note.title}>
-			</Tile>
-		);
-	} 
 	
 	
 	changeColor(color) {
@@ -272,8 +234,7 @@ export default class Board extends Component{
 				const sort = (typeof a[key] === "number") ?  numberSort  :   stringSort
 				return sort (itemA, itemB)
 			 }
-			 console.log(this.state.notes);
-		} 
+ 		} 
 		else {
 			this.setState({
 				notes: this.initialNotes, 
@@ -284,7 +245,6 @@ export default class Board extends Component{
 	}
 
 	toggleContainer(bool) {
-		console.log("schimbal la ", !bool);
 		this.setState({
 			isToggled: !bool
 		});
@@ -292,24 +252,26 @@ export default class Board extends Component{
 	
 
 	render() { 
-		console.log('Bord props: ', this.state.isToggled);
- 		return (
-			<div className= {'board ' + this.state.changeColorClass} >
-				 <div className= "header-container">
-					<Search notes={this.state.notes} onSearch={this.searched} onResetSearch={this.resetSearch}/>
-					<ColorContainers colors = {this.state.colors} onClickColor = {this.changeColor}/>
-					<SortBy allCourses ={this.state.notes} onHandleSort={this.onSortBy}></SortBy>  
-					<AddNewWishCourses onClickNew={this.addNewNote} onToggleContainer={this.toggleContainer} isToggled={this.state.isToggled}/> 
- 				</div>  
-				 
+		return (
+			<Router>
+				<div className= {'board ' + this.state.changeColorClass} >
+					<div className= "header-container">
+						<Search notes={this.state.notes} onSearch={this.searched} onResetSearch={this.resetSearch}/>
+						<ColorContainers colors = {this.state.colors} onClickColor = {this.changeColor}/>
+						<SortBy allCourses ={this.state.notes} onHandleSort={this.onSortBy}></SortBy>  
+   					</div> 
+ 					<AsideMenu breadcrumps={this.state.menu} colors={this.state.changeColorClass}/> 
+ 						 
+ 					<div className='activeCourseContainer'>
+						<Route path='/ContactUs' component ={ContactUs} />    
+						<Route path='/Trainings/:submenus'  component={TrainingsTypes} />   
+						<Route path='/Trainings'  exact render ={() =><Tiles tiles={this.state.notes} onClickRemove={this.removeNode} coursesSortBy ={this.state.coursesSortBy} onChange={this.update} />} /> 
+						<Route path='/Home' render ={() =><Chart notes={this.state.notes}/>} /> 
+					</div>
 
-				 <div className='activeCourseContainer'>
-					<h1 className='fullWidth'> Active Courses </h1>
-					{ this.state.notes.map(this.displayNotes)}
-				</div>
-				
-				 <WishListContainer wishList={this.state.wishTrainings} onToggleContainer={this.toggleContainer} isToggled={this.state.isToggled}/>  
-			</div>
+ 					<AsideBar onToggleContainer={this.toggleContainer} isToggled={this.state.isToggled}/>  
+ 				</div>
+         	</Router>
 		)
 	}
 }

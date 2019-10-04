@@ -1,5 +1,5 @@
 import React, {Component} from 'react'; 
-import './BkgColors.css';
+import './BkgColors.scss';
 
 export default class ColorContainers extends Component{
 	constructor(props) {

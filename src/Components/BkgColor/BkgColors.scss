@@ -1,3 +1,7 @@
+@import './../../partials/variables'; 
+@import './../../partials/mixins'; 
+
+
 .BkgColors {
 	width: auto; 
 	margin: 0; 
@@ -14,18 +18,19 @@
     margin: 0.2vw;
  }
  
+
  .red {
-	 background-color: lightcoral; 
+	 @include setBkgColor($red-bkg); 
  }
  
  .yellow {
-	 background-color: orange; 
+	@include setBkgColor($yellow-bkg); 
  }
  
  .blue {
-	 background-color: lightblue; 
+	@include setBkgColor($blue-bkg); 
  }
 
  .grey {
-	 background-color: lightgrey;
+	@include setBkgColor($greylight-bkg); 
  }

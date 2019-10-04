@@ -1,0 +1,126 @@
+notes : [{
+				id: 10, 
+				title : "English ",
+				level: '1', 
+				timetable: "10:00",
+				teacher: "Oana Pelea", 
+				duration: "02:30:00", 
+				active: true, 
+				data : {
+					day: 11, 
+					month : "January"
+				}, 
+				complete: 20
+			}, 
+			{
+				id: 11, 
+				title : "Chemistry",
+				level: '2', 
+				timetable: "12:30",
+				teacher: "Tea Cher ", 
+				duration: "02:30", 
+				active: false,
+				data : {
+					day: 21, 
+					month : "February"
+				},  
+				complete: 98
+			}, 
+			{
+				id: 13,  
+				level: '3', 
+				title : "SAP Basics",
+				timetable: "17:30",
+				teacher: "Mib Haela", 
+				duration: "02:10", 
+				active: false,
+				data : {
+					day: 21, 
+					month : "March"
+				},  
+				complete: 60
+			}, 
+			{
+				id: 14, 
+				level: '3', 
+				title : "Sport",
+				timetable: "14:30",
+				teacher: "Spor Sport", 
+				duration: "01:45", 
+				active: false,
+				data : {
+					day: 21, 
+					month : "Aprile"
+				}, 
+				complete: 100
+			}, 
+			{
+				id: 15, 
+				level: '2', 
+				title : "Database ",
+				timetable: "12:30",
+				teacher: "Bazede Date", 
+				duration: "2h:30min", 
+				active: true,
+				data : {
+					day: 21, 
+					month : "July"
+				}, 
+				complete: 100
+			}, 
+			{
+				id: 16, 
+				title : "History",
+				level: '3',
+				timetable: "17:30",
+				teacher: "Edu Bibb", 
+				duration: "0h:45", 
+				active: false,
+				data : {
+					day: 19, 
+					month : "August"
+				}, 
+				complete: 0
+			}, 
+			{
+				id: 17,  
+				level: '3', 
+				title : "SAP Basics",
+				timetable: "17:30",
+				teacher: "Mib Haela", 
+				duration: "02:30", 
+				active: true,
+				data : {
+					day: 21, 
+					month : "January"
+				},  
+				complete: 80 
+			}, 
+			{
+				id: 18, 
+				level: '3', 
+				title : "Sport",
+				timetable: "14:30",
+				teacher: "Spo Sport", 
+				duration: "01:45", 
+				active: true,
+				data : {
+					day: 21, 
+					month : "July"
+				}, 
+				complete: 70
+			}, 
+			{
+				id: 19, 
+				level: '2', 
+				title : " Music",
+				timetable: "12:30",
+				teacher: "Bazede Date", 
+				duration: "20:50", 
+				active: true,
+				data : {
+					day: 21, 
+					month : "August"
+				}, 
+				complete: 66
+			}]

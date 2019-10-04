@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Tile-sass.scss';
+import './Tile.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Tile extends Component {
@@ -12,14 +12,12 @@ class Tile extends Component {
 		this.edit = this.edit.bind(this);
 		this.remove = this.remove.bind(this);
 		this.save = this.save.bind(this);
-		//this.renderEditingDisplay = this.renderEditingDisplay.bind(this);
-		this.renderDisplay = this.renderDisplay.bind(this);
+ 		this.renderDisplay = this.renderDisplay.bind(this);
 		this.addNew = this.addNew.bind(this);
 		this.more = this.more.bind(this);
 		 
 	}
 	edit() { 
-
 		this.setState({
 			editing: true
 		}); 
@@ -51,21 +49,20 @@ class Tile extends Component {
 	}
   
 
-	
 	renderDisplay() {
 		const dataCompleteProp = {
 			width : this.props.dataComplete +'% ', 
 			backgroundColor : '#209cee',
 			textAlign: 'left', 
-			paddingLeft: '10px' 
+			paddingLeft: '10px' , 
+			fontSize: '0.5em'
 		}; 
 		
 		if (this.state.moreProp)  {
 			 return (
 			 <div className='App App-header viewMore'>     
 				<header>	
-					<div>{this.props.dataTitle}  with  {this.props.dataTeacher}    </div>
-				 
+					<div>{this.props.dataTitle}  -  {this.props.dataTeacher}    </div>
 				</header>
 				<div className="smallFont subtitle">  
 					<span> <FontAwesomeIcon icon="calendar-day" /> {this.props.dataDay} - {this.props.dataMonth}  </span>
@@ -73,13 +70,13 @@ class Tile extends Component {
 				</div>
 				
 				<div className="bar">	
-					<div style={dataCompleteProp} ><span> {this.props.dataComplete} </span>  </div>  
+					<div style={dataCompleteProp} ><span> {this.props.dataComplete}% </span>  </div>  
 				</div> 
 				
-				<div className="buttons">
+				{/* <div className="buttons">
 					<span className="button is-small">Open course </span> 
 					<span className="button is-small" onClick={this.remove}>Remove course </span>
-  				</div>  
+  				</div>   */}
 				<ul className="maxBtn">
 					<li title="see details" onClick={this.more}> - </li>
 				</ul> 
@@ -95,6 +92,9 @@ class Tile extends Component {
 						<li title="see details" onClick={this.more}> - </li>
 					</ul> 
 				</div>
+
+
+
 			  )
 			 
 		 }
