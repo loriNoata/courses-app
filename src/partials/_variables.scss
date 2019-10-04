@@ -18,3 +18,10 @@ $lila: #5087B3;
 $box-radius: 0;
 $box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1); 
 $default-text-color: #474747; 
+
+$breakpoints: (
+  'xsmall': ( min-width:  500px ),
+  'small':  ( min-width:  767px ),
+  'medium': ( min-width:  992px ),
+  'large':  ( min-width: 1200px )
+) !default;

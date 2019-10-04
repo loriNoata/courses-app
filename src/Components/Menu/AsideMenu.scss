@@ -7,10 +7,25 @@
     top: 0;
     left: 0;
     background-color: $default-text-color; // whitesmoke;
-    padding: 20px;
-    padding-top: 18vh;
     z-index: 9;
-    width: 12vw;
+    @include respond-to('xsmall') {
+        padding:18vh 0px 0px 0px;
+        width: 17vw;
+    }
+
+    @include respond-to('small') {
+        padding:18vh 5px 5px 5px;
+        width: 13vw;
+    }
+    @include respond-to('medium') {
+        border:3px solid pink; 
+        padding:18vh 5px 5px 5px;
+        width: 13vw;
+     }
+    @include respond-to('large') {
+        padding: 18vh 20px 20px 20px;
+        width: 12vw;
+    }
     transition: all 0.5s linear; 
 }
 
@@ -32,9 +47,21 @@
 }
 
 .asideMenuBar.isSmall {
-    width: 7vw;
     padding: 10px;
     padding-top: 18vh;
+
+    @include respond-to('xsmall') {
+        width: 15vw;
+    }
+    @include respond-to('small') {
+        width: 17vw; 
+    }
+    @include respond-to('medium') {
+        width: 7vw;
+    }
+    @include respond-to('large') {
+        width: 7vw;
+    }
 
     .menu {
         color: $default-text-color;
@@ -43,7 +70,7 @@
     
         .menuIcon {
             font-size: 2em;
-            text-align:  center;
+            text-align: center;
         }
 
         .menuTitle {
@@ -63,15 +90,37 @@
     width: 100%;
     text-align: center;
     font-size: 1.5em;
+    @include respond-to('xsmall') {
+       visibility: hidden; 
+    }
+    @include respond-to('xsmall') {
+        visibility: visible; 
+    }
  }
 
 .menu {
     padding: 10px 0;
     -webkit-transition: all 0.5s linear;
     transition: all 0.5s linear;
-    background-color:rgba(116, 116, 116, 0.4);
-    width: 70%;
     margin: 15px auto;
+    @include respond-to('xsmall') {
+        width: 100%; 
+        background-color: none; 
+    }
+    @include respond-to('small') {
+        width: 85%; 
+        background-color: none; 
+     }
+    @include respond-to('medium') {
+        width: 70%;
+        background-color:rgba(116, 116, 116, 0.4);
+      }
+    @include respond-to('large') {
+        width: 70%;
+        background-color:rgba(116, 116, 116, 0.4);
+     }
+
+
  }
 
  
