@@ -1,8 +1,14 @@
+@import './../../partials/variables'; 
+@import './../../partials/mixins'; 
+
+
+
 #root {
 	min-height: 100vh;
-    background-color: lightgrey;
+    background-color: $greylight-bkg;
     height: auto;
 }
+
 .App {
   text-align: center;
 }
@@ -15,25 +21,30 @@ header p{
 
 
 .App-header {
-  background-color: #8692a9;
-  height: 30vh;
-  padding: 3vh; 
-  width: 23vw;
+  $marginElem : 1px;
+  background-color: rgba(255, 255, 255, 0.9);
+  min-height: 160px; 
+  height: $tile-height; 
+  padding: $tile-padding; 
+  width: $tile-width;   
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
-  margin: 1px; 
+ /* color: white; */
+  margin: $marginElem; 
   transition: all 0.9s ease;
   position: relative; 
+ // box-shadow: $box-shadow; 
+
 }
 
-.App-header.viewMore{
-	width: calc(2 * 23vw + 2px);
+.viewMore{
+    $marginElem : 1px;
+	width: calc(2 * #{ $tile-width } + 2px);
 	align-items: flex-start; 
-	padding: 20px; 
+	padding: $tile-padding; 
 }
  
 .App-header p, 
@@ -42,20 +53,22 @@ header p{
 	padding: 0; 
 }
  
-.App-link {
-  color: #61dafb;
-}
 
 .board {
-	padding:15vh 9vw 5vh; 
-	display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
-    align-items: flex-start;
-	margin: 0 auto; 
+    @extend %row-flex-start; 
+    
+    padding: 17.2vh 0vw 5vh 14vw; 
+    margin: 0 auto; 
+    min-height: 100vh; 
 }
 
-.removeBtn, .maxBtn {
+.activeCourseContainer{
+    @extend %row-flex-start; 
+	width: 70vw;  
+ }
+
+
+.maxBtn {
 	align-self: flex-end;
     color: white;
     font-size: 16px;
@@ -65,19 +78,6 @@ header p{
     bottom: 20px;
 }
  
-.removeBtn li {
-	margin: 0; 
-	padding: 0;
-	position:absolute; 
-	top:-65px;
-	right:10px; 
-	width:10px;  
-}
-
-
-.App-header.viewMore  .removeBtn li {
-	top:-30px;
-}
  
 .maxBtn li{
 	margin: 0;
@@ -92,21 +92,22 @@ header p{
 
 
 .smallFont{
-	font-size: 14px; 
+    font-size: 14px; 
+    color: $default-text-color; 
 }
 
 .smallFont.subtitle{
 	padding: 0 10px 5px 0;
-    color: lightgrey;
+    
+    font-size: 0.6em; 
+    text-align: left; 
 }
 
 .smallFont.subtitle > span{
 	margin-right: 10px; 
 }
 
-.smallFont.subtitle > span > svg {
-	color: white; 
-}
+ 
 
 .leftAlign {
 	text-align: left; 
@@ -120,19 +121,6 @@ header p{
 	background-color: #ddd;
     margin:10px 0; 
 }
-
-.dataComplete {
-	background-color: red; 
-}
-
- .activeCourseContainer{
-	width: 70vw; 
-	margin-right: 2vw;  
-	display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
-    align-items: flex-start;
- }
 
  .fullWidth{
 	 width: 100%; 

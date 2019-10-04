@@ -1,0 +1,76 @@
+@import './../../partials/variables'; 
+@import './../../partials/mixins'; 
+
+.yellow {
+  .level{
+    .title {
+      color: $yellow-bkg ;
+    }
+  }
+}
+
+.red {
+  .level{
+    .title {
+      color: $red-bkg ;
+    }
+  }
+}
+
+.blue {
+  .level{
+    .title {
+      color: $blue-bkg ;
+    }
+  }
+}
+.grey {
+  .level{
+    .title {
+      color: $lila ;
+    }
+  }
+}
+
+.board {
+    .contact-us-container{
+        width: 97%;
+    }
+
+    input, textarea, select,  .button {
+        border-radius: $box-radius; 
+    }
+    .box{
+        border-radius: $box-radius; 
+        background-color: $greylight-transparent; 
+    }
+    
+    .customInput{
+      margin: 1rem ;  
+    }
+
+
+    .input +  .border {
+        display: block; 
+        width: 0%;
+        height: 2px;
+        background-color: #27ad8a;
+        transition: width 0.5s;
+      }
+      
+      .input:focus + .border {
+        width: 100%;
+      }
+      
+      .emptyField{
+         background-color: rgba(220, 225, 230, 0.7);
+        
+      }
+      
+      .input.emptyField + .border {
+        background-color: red;
+        transition: width 0.5s;
+      }
+
+
+}
