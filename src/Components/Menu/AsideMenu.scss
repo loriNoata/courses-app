@@ -18,7 +18,6 @@
         width: 13vw;
     }
     @include respond-to('medium') {
-        border:3px solid pink; 
         padding:18vh 5px 5px 5px;
         width: 13vw;
      }
@@ -93,7 +92,10 @@
     @include respond-to('xsmall') {
        visibility: hidden; 
     }
-    @include respond-to('xsmall') {
+    @include respond-to('small') {
+        visibility: hidden; 
+    }
+    @include respond-to('medium') {
         visibility: visible; 
     }
  }
