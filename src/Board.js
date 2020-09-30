@@ -53,7 +53,7 @@ export default class Board extends Component{
 				title : "Chemistry",
 				level: '2', 
 				timetable: "12:30",
-				teacher: "Tea Cher ", 
+				teacher: "Cauc Mihaela", 
 				duration: "02:30", 
 				active: false,
 				data : {
@@ -67,7 +67,7 @@ export default class Board extends Component{
 				level: '3', 
 				title : "SAP Basics",
 				timetable: "17:30",
-				teacher: "Mib Haela", 
+				teacher: "Katarina Bo", 
 				duration: "02:10", 
 				active: false,
 				data : {
@@ -81,7 +81,7 @@ export default class Board extends Component{
 				level: '3', 
 				title : "Sport",
 				timetable: "14:30",
-				teacher: "Spor Sport", 
+				teacher: "Gica Hagi", 
 				duration: "01:45", 
 				active: false,
 				data : {
@@ -95,7 +95,7 @@ export default class Board extends Component{
 				level: '2', 
 				title : "Database ",
 				timetable: "12:30",
-				teacher: "Bazede Date", 
+				teacher: "Na Andrei ", 
 				duration: "2h:30min", 
 				active: true,
 				data : {
@@ -109,8 +109,8 @@ export default class Board extends Component{
 				title : "History",
 				level: '3',
 				timetable: "17:30",
-				teacher: "Edu Bibb", 
-				duration: "0h:45", 
+				teacher: "Edu Bib ", 
+				duration: "0:45", 
 				active: false,
 				data : {
 					day: 19, 
@@ -121,9 +121,9 @@ export default class Board extends Component{
 			{
 				id: 17,  
 				level: '3', 
-				title : "SAP Basics",
+				title : "SAP Advanced",
 				timetable: "17:30",
-				teacher: "Mib Haela", 
+				teacher: "Katarina Bo", 
 				duration: "02:30", 
 				active: true,
 				data : {
@@ -135,9 +135,9 @@ export default class Board extends Component{
 			{
 				id: 18, 
 				level: '3', 
-				title : "Sport",
+				title : "Sport - Yoga",
 				timetable: "14:30",
-				teacher: "Spo Sport", 
+				teacher: "Gigi Becali", 
 				duration: "01:45", 
 				active: true,
 				data : {
@@ -151,11 +151,67 @@ export default class Board extends Component{
 				level: '2', 
 				title : " Music",
 				timetable: "12:30",
-				teacher: "Bazede Date", 
+				teacher: "Hulio Eglesias", 
 				duration: "20:50", 
 				active: true,
 				data : {
 					day: 21, 
+					month : "August"
+				}, 
+				complete: 66
+			},
+			{
+				id: 20, 
+				title : "History",
+				level: '3',
+				timetable: "17:30",
+				teacher: "Edu Bib ", 
+				duration: "0:45", 
+				active: false,
+				data : {
+					day: 19, 
+					month : "August"
+				}, 
+				complete: 0
+			}, 
+			{
+				id: 21,  
+				level: '3', 
+				title : "SAP Advanced",
+				timetable: "17:30",
+				teacher: "Katarina Bo", 
+				duration: "02:30", 
+				active: true,
+				data : {
+					day: 21, 
+					month : "January"
+				},  
+				complete: 80 
+			}, 
+			{
+				id: 22, 
+				level: '3', 
+				title : "Sport - Aerobic",
+				timetable: "14:30",
+				teacher: "Gigi Bec ", 
+				duration: "01:45", 
+				active: true,
+				data : {
+					day: 21, 
+					month : "July"
+				}, 
+				complete: 70
+			}, 
+			{
+				id: 23, 
+				level: '2', 
+				title : "Music",
+				timetable: "12:30",
+				teacher: "Mariah Carry", 
+				duration: "20:50", 
+				active: true,
+				data : {
+					day: 8, 
 					month : "August"
 				}, 
 				complete: 66
@@ -241,7 +297,6 @@ export default class Board extends Component{
 				coursesSortBy: ''
 			}) 
 		}
-		
 	}
 
 	toggleContainer(bool) {
@@ -252,6 +307,7 @@ export default class Board extends Component{
 	
 
 	render() { 
+		const loadHome = '/Home' 
 		return (
 			<Router>
 				<div className= {'board ' + this.state.changeColorClass} >
@@ -264,9 +320,9 @@ export default class Board extends Component{
  						 
  					<div className='activeCourseContainer'>
 						<Route path='/ContactUs' component ={ContactUs} />    
-						<Route path='/Trainings/:submenus'  component={TrainingsTypes} />   
-						<Route path='/Trainings'  exact render ={() =><Tiles tiles={this.state.notes} onClickRemove={this.removeNode} coursesSortBy ={this.state.coursesSortBy} onChange={this.update} />} /> 
-						<Route path='/Home' render ={() =><Chart notes={this.state.notes}/>} /> 
+						<Route path='/Trainings/:submenus' component={TrainingsTypes} />   
+						<Route path='/Trainings'  render ={() =><Tiles tiles={this.state.notes} onClickRemove={this.removeNode} coursesSortBy ={this.state.coursesSortBy} onChange={this.update} />} /> 
+						<Route path='/Home' render ={() =><Chart notes={this.state.notes}/>} />
 					</div>
 
  					<AsideBar onToggleContainer={this.toggleContainer} isToggled={this.state.isToggled}/>  

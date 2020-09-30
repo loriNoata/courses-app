@@ -10,21 +10,19 @@ import axios from '../axios-orders';
       fetch('https://randomuser.me/api/?results=20')
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         setData(data)
         return data; 
       } );      
     }, []);
     // , 
-
-
+   
     return(
-      <div className="level box is-mobile" >
+      <div> 
          { match.params.submenus  ==='Active' 
             ?  ActiveTrainings(data)
             : (match.params.submenus  ==='Complete'
-                ? CompleteTrainings()
-                : TestsTrainings()
+                ? CompleteTrainings(data)
+                : TestsTrainings(data)
             )
           }
      </div>
@@ -33,31 +31,53 @@ import axios from '../axios-orders';
    
  
 const ActiveTrainings = (data) => {
- console.log("active tr", data.results);
-
-//const users =  data.results.map(result => console.log(result) )
+const users = (data.results) ?  data.results : console.log("empty data")
+console.log("::::", users);
 
   return (
-    <div className="level box is-mobile" >
-          ActiveTraiongs box  - 
-
-    </div>
+    <React.Fragment>
+      <h1 > Active Training page </h1>
+      <div className="level box is-mobile subMenu"> 
+        {users && users.map(user =>(
+          <div key={user.location.street.number}> 
+            <h2>{user.name.title}  {user.name.first} {user.name.last}  |</h2>
+          </div>
+        ))}
+      </div>
+    </React.Fragment>
   )
 }
 
-const CompleteTrainings = () => {
+const CompleteTrainings = (data) => {
+  const users = (data.results) ?  data.results : console.log("empty data")
   return (
-    <div className="level box is-mobile" >
-          CompletTraiongs box  
-    </div>
+    <React.Fragment>
+      <h1 > Complete Training page </h1>
+      <div className="level box is-mobile subMenu"> 
+        {users && users.map(user =>(
+          <div key={user.location.street.number}> 
+            <h2>{user.name.title}  {user.name.first} {user.name.last}  |</h2>
+          </div>
+        ))}
+      </div>
+    </React.Fragment>
   )
 }
 
-const TestsTrainings = () => {
+const TestsTrainings = (data) => {
+  const users = (data.results) ?  data.results : console.log("empty data")
+ 
   return (
-    <div className="level box is-mobile" >
-          TestsTrainings box  
+    <React.Fragment>
+    <h1 > Tests Training page </h1>
+    <div className="level box is-mobile subMenu"> 
+      {users && users.map(user =>(
+        <div key={user.location.street.number}> 
+          <h2>   {user.name.first} {user.name.last}  |</h2>
+        </div>
+      ))}
     </div>
+  </React.Fragment>
   )
 }
 

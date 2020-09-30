@@ -9,46 +9,40 @@ class Tile extends Component {
 			editing: false, 
 			moreProp : false
 		}; 
-		this.edit = this.edit.bind(this);
-		this.remove = this.remove.bind(this);
-		this.save = this.save.bind(this);
  		this.renderDisplay = this.renderDisplay.bind(this);
-		this.addNew = this.addNew.bind(this);
-		this.more = this.more.bind(this);
-		 
 	}
-	edit() { 
+
+	edit = () => { 
 		this.setState({
 			editing: true
 		}); 
 	}
 	
-	more(e) {
+	more = (e) => {
 		e.preventDefault();
 		this.setState({
 			moreProp: !(this.state.moreProp),
-		 
 		}); 		
 	}
 	 
-	remove(e) {
+	remove = (e) => {
 		e.preventDefault();
 		this.props.onClickRemove(this.props.index); 
 	}
-	save(e) {
+
+	save = (e) => {
 		e.preventDefault();
 		this.props.onChange(this._newText.value, this.props.index);
 		this.setState({
 			editing: false
 		}); 
-		 
 	}
-	addNew(e) {
+
+	addNew = (e) => {
 		e.preventDefault();
 		this.props.onClickNew();
 	}
   
-
 	renderDisplay() {
 		const dataCompleteProp = {
 			width : this.props.dataComplete +'% ', 
@@ -59,7 +53,7 @@ class Tile extends Component {
 		}; 
 		
 		if (this.state.moreProp)  {
-			 return (
+			return (
 			 <div className='App App-header viewMore'>     
 				<header>	
 					<div>{this.props.dataTitle}  -  {this.props.dataTeacher}    </div>
@@ -86,16 +80,14 @@ class Tile extends Component {
 			 return (
 				<div className='App App-header '>     
 					<p className="smallFont leftAlign"> 
-					 {this.props.dataDay} - {this.props.dataMonth}    </p>
+						{this.props.dataDay} - {this.props.dataMonth}
+					</p>
 					<header>{this.props.dataTitle}</header>
 					<ul className="maxBtn">
 						<li title="see details" onClick={this.more}> - </li>
 					</ul> 
 				</div>
-
-
-
-			  )
+			)
 			 
 		 }
 		
